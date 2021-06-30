@@ -33,7 +33,7 @@ const CardList = (props) => {
         alert("LOLOL Couldn't Delete the Card, something went wrong!! 😖");
       });
   };
-
+  //Handling likes on each card!
   const plusOneCardItem = (card) => {
     axios
       .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
