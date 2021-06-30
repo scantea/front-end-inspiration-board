@@ -2,6 +2,7 @@ import './App.css';
 import React,{useState, useEffect} from 'react';
 import NewBoard from './components/NewBoard';
 import BoardList from './components/BoardList';
+import CardList from './components/CardList';
 import Board from './components/Board';
 import axios from 'axios';
 
@@ -21,11 +22,24 @@ function App() {
     )
   })
   // Make sure the BoardData state variable updates to what is entered
-  const updateBoardData = (event) => {
-    setBoardData(event.target.value);
-  }
+  // const updateBoardData = (event) => {
+  //   setBoardData(event.target.value);
+  // }
 // need to connect with backend API to run axios get call 
-  
+const createNewBoard = (newBoard) => {
+  axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard).then((response) => {
+    console.log("Response:", response.data.board);
+    const boards = [...boardData];
+    boards.push(response.data.board);
+    setBoardData(boards);
+  }).catch((error) => {
+    console.log('Error:', error);
+    alert('Couldn\'t create a new board.');
+  });
+}
+// Board visibility state variables
+const [isBoardFormVisible, setBoardFormVisible] = useState(true);
+const toggleNewBoardForm = () => {setBoardFormVisible(!isBoardFormVisible)}
 // delete all functionality
   const deleteAll = () => {
     if (window.confirm('Are you sure you want to delete all boards and cards?')) {
@@ -62,11 +76,11 @@ function App() {
           </section>
           <section className="new_board_form">
             <h2>Let's make a new board!</h2>
-            {isBoardFormVisible ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
+            {isBoardFormVisible ? <NewBoard createNewBoard={createNewBoard}></NewBoard> : ''}
             <span onClick={toggleNewBoardForm} className="new-board-form-toggle">{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
         </section>
-          {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
+          {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
       </div>
       <footer>Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
     </div>
