@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Card from "./Card";
+import NewCardForm from "./NewCard";
 
 const CardList = (props) => {
   const [cardData, setCardData] = useState([]);
