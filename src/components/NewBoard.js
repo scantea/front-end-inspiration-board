@@ -12,7 +12,7 @@ const NewBoard = (props) => {
 
     const makeNewBoard = (event) => {
         event.preventDefault()
-        props.NewBoard({Title, OwnersName})
+        props.createNewBoard({Title, OwnersName})
         setTitle("");
         setOwnersName("");
     }

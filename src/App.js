@@ -1,11 +1,9 @@
 import './App.css';
 import React,{useState, useEffect} from 'react';
 import NewBoard from './components/NewBoard';
-import BoardList from './components/BoardList';
 import CardList from './components/CardList';
 import Board from './components/Board';
 import axios from 'axios';
-
 
 function App() {
   // sets up state variables for Board component
@@ -14,18 +12,24 @@ function App() {
     title: '',
     owner: '',
     board_id: null
-  })
+  });
+
+  // useEffect hook
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
+    }).then((response) => {
+      setBoardData(response.data);
+    })
+  }, []);
+
+  // logic for selecting board/elements
   const selectBoard = (board) => {setSelectedBoard(board)};
   const boardsElements = boardData.map(board => {
     return (
       <li><Board board={board} onBoardSelect={selectBoard} /></li>
     )
   })
-  // Make sure the BoardData state variable updates to what is entered
-  // const updateBoardData = (event) => {
-  //   setBoardData(event.target.value);
-  // }
-// need to connect with backend API to run axios get call 
+// double check backend endpoint naming conventions match '/boards' etc...
 const createNewBoard = (newBoard) => {
   axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard).then((response) => {
     console.log("Response:", response.data.board);
@@ -62,7 +66,7 @@ const toggleNewBoardForm = () => {setBoardFormVisible(!isBoardFormVisible)}
   return (
     <div className="page">
       <div className="content">
-        <h1>Stickie Board</h1>
+        <h1>🐨Stickie Board🐨</h1>
         <section className="boards_container">
           <section>
             <h2>Boards</h2>
