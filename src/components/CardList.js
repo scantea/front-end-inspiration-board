@@ -12,7 +12,7 @@ const CardList = (props) => {
         `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`
       )
       .then((response) => {
-        setCardData(response.data);
+        setCardData(response.data.cards);
       })
       .catch((error) => {
         console.log("Error:", error);
@@ -71,7 +71,7 @@ const CardList = (props) => {
       )
       .then((response) => {
         const cards = [...cardData];
-        cards.push(response.data.card);
+        cards.push(response.data);
         setCardData(cards);
       })
       .catch((error) => {

@@ -1,33 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const NewBoard = (props) => {
-    const [Title, setTitle] = useState("");
-    const [OwnersName, setOwnersName] = useState("");
-    const handleOwnersName = (event) => {
-        setOwnersName(event.target.value)
-    };
-    const handleTitle = (event) => {
-        setTitle(event.target.value)
-    };
+  const [title, setTitle] = useState("");
+  const [owner, setOwner] = useState("");
+  const handleOwnersName = (event) => {
+    setOwner(event.target.value);
+  };
+  const handleTitle = (event) => {
+    setTitle(event.target.value);
+  };
 
-    const makeNewBoard = (event) => {
-        event.preventDefault()
-        props.createNewBoard({Title, OwnersName})
-        setTitle("");
-        setOwnersName("");
-    }
+  const makeNewBoard = (event) => {
+    event.preventDefault();
+    props.createNewBoard({ title, owner });
+    setTitle("");
+    setOwner("");
+  };
 
-    return (
-        <form onSubmit={makeNewBoard}>
-            <label>Title</label>
-            <input type="text" value={Title} onChange={handleTitle} />
-            <label>Owner's Name</label>
-            <input type="text" value={OwnersName} onChange={handleOwnersName} />
-            <input type="submit" value="Submit" />
-            <p>Preview: {Title} - {OwnersName}</p>
-        </form>
-    );
-
-}
+  return (
+    <form onSubmit={makeNewBoard}>
+      <label>Title</label>
+      <input type="text" value={title} onChange={handleTitle} />
+      <label>Owner's Name</label>
+      <input type="text" value={owner} onChange={handleOwnersName} />
+      <input type="submit" value="Submit" />
+      <p>
+        Preview: {title} - {owner}
+      </p>
+    </form>
+  );
+};
 
 export default NewBoard;
