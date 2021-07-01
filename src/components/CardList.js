@@ -16,17 +16,15 @@ const CardList = (props) => {
         //insert sort code
         const sortArray = (type) => {
           const types = {
-            card_id: "card_id",
-            message: "message",
-            likes_count: "likes_count",
+            card_id: 'card_id',
+            message: 'message',
+            likes_count: 'likes_count',
           };
+          const sortProperty = types[type];
+          const sorted = [...CardList].sort((a, b) => b[sortProperty] - a[sortProperty]);
+          setCardData(sorted);
         };
-        const sortProperty = types[type];
-        const sorted = [...CardList].sort(
-          (a, b) => b[sortProperty] - a[sortProperty]
-        );
-        setCardData(sorted);
-        setCardData(response.data.cards);
+        // setCardData(response.data.cards);
         sortArray(sortType);
       }) //logic to sort cards; create a function in or out, and call it here
       .catch((error) => {
@@ -77,7 +75,7 @@ const CardList = (props) => {
       ></Card>
     );
   });
-
+  // logic for creating a new card
   const postNewCard = (message) => {
     axios
       .post(
