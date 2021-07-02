@@ -81,7 +81,7 @@ function App() {
   return (
     <div className="page">
       <div className="content">
-        <h1>🐨Stickie Board🐨</h1>
+        <h1>🐶Jay's Buggy Puggy Board🌭</h1>
         <section className="boards_container">
           <section>
             <h2>Boards</h2>

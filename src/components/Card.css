@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Zen+Loop&display=swap');
+
 .card_controls {
     list-style-type: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -9,5 +11,25 @@
 }
 
 .card {
-    
+    font-family: 'Mountains of Christmas', cursive;
+    font-weight: bold;
+    background-color: pink;
+    box-shadow: palevioletred;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: content;
+    padding: 2em;
+    flex-direction: column;
+}
+
+.cards__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.card_message {
+    text-align: center;
+    font-size: 1.5em;
+    word-break: break-all;
 }
