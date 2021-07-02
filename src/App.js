@@ -81,14 +81,14 @@ function App() {
   return (
     <div className="page">
       <div className="content">
-        <h1>🐨Stickie Board🐨</h1>
+        <h1>🐶 Jay's Buggy Puggy-Mean Pugs Board 🌭</h1>
         <section className="boards_container">
           <section>
-            <h2>Boards</h2>
+            <h2>💋 Burn Book Boards 💋</h2>
             <ol className="boards_list">{boardsElements}</ol>
           </section>
           <section>
-            <h2>Selected Board</h2>
+            <h2>💋 Selected Burn Book 💋</h2>
             <p>
               {selectedBoard.board_id
                 ? `${selectedBoard.title} - ${selectedBoard.owner}`
@@ -96,7 +96,7 @@ function App() {
             </p>
           </section>
           <section className="new_board_form">
-            <h2>Let's make a new board!</h2>
+            <h2>💋 Let's make a new burn! 💋</h2>
             {isBoardFormVisible ? (
               <NewBoard createNewBoard={createNewBoard}></NewBoard>
             ) : (
@@ -123,10 +123,12 @@ function App() {
         <span onClick={deleteAll} className="footer__delete-btn">
           here
         </span>{" "}
-        to delete all boards and cards!
+        to delete all evidence, or spread it ;)!
       </footer>
     </div>
   );
 }
 
 export default App;
+
+//user input, to choose how to sort

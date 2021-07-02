@@ -7,30 +7,30 @@ const CardList = (props) => {
   const [cardData, setCardData] = useState([]);
   const [sortType, setSortType] = useState("likes_count");
 
+  const sortArray = (type) => {
+    const types = {
+      card_id: "card_id",
+      message: "message",
+      likes_count: "likes_count",
+    };
+    const sortProperty = types[type];
+    const sorted = [...cardData].sort(
+      (a, b) => b[sortProperty] - a[sortProperty]
+    );
+    console.log(sorted);
+    setCardData(sorted);
+  };
+
   useEffect(() => {
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`
       )
       .then((response) => {
-        //insert sort code
-        const sortArray = (type) => {
-          const types = {
-            card_id: "card_id",
-            message: "message",
-            likes_count: "likes_count",
-          };
-          const sortProperty = types[type];
-          const sorted = [...cardData].sort(
-            (a, b) => b[sortProperty] - a[sortProperty]
-          );
-          setCardData(sorted);
-        };
-        //setCardData(sorted);
-        sortArray(sortType);
         setCardData(response.data.cards);
-        //sortArray(sortType);
-      }) //logic to sort cards; create a function in or out, and call it here
+        // sortArray(sortType);
+      })
+
       .catch((error) => {
         console.log("Error:", error);
         alert("ooopsie Daisy, couldn't get cards on our board!! 😖 ");
@@ -97,33 +97,19 @@ const CardList = (props) => {
       });
   };
 
-  // const sort_cards = (card) =>{
-
-  //   return ()
-  // }
-
   return (
     <section className="cards__container">
       <section>
-        <h2>Cards for {props.board.title}</h2>
-        <div className="card-items__container">{cardElements}</div>
-      </section>
-      <NewCardForm postNewCard={postNewCard}></NewCardForm>
-      <section className="sort__selection__container">
+        <h2>Cards for: {props.board.title} 🔥</h2>
         <h3>Sort By:</h3>
-        <select onChange={(event) => setSortType(event.target.value)}>
-          <option value="card_id">ID</option>
+        <select onChange={(event) => sortArray(event.target.value)}>
+          <option value="card_id">Burn ID</option>
           <option value="message">Alphabetically</option>
           <option value="likes_count">Number likes</option>
         </select>
-        {cardData.map((card) => (
-          <div key={card.card_id} style={{ margin: "30px" }}>
-            <div>{`ID: ${card.card_id}`}</div>
-            <div>{`Message: ${card.message}`}</div>
-            <div>{`Likes: ${card.likes_count}`}</div>
-          </div>
-        ))}
+        <div className="card-items__container">{cardElements}</div>
       </section>
+      <NewCardForm postNewCard={postNewCard}></NewCardForm>
     </section>
   );
 };

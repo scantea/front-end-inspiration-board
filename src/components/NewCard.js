@@ -14,9 +14,9 @@ const NewCardForm = (props) => {
 
   return (
     <section className="new_CardForm_section">
-      <h2>Create New Card</h2>
+      <h2>Create New Card 🔥</h2>
       <form onSubmit={submitNewCard} className="input_new_card_info">
-        <label>Message</label>
+        <label>🔥 Message 🔥</label>
         <input
           type="text"
           className={
@@ -27,7 +27,7 @@ const NewCardForm = (props) => {
           onChange={changeMessage}
           value={message}
         ></input>
-        <p>Preview: {message}</p>
+        <p>Preview 🤬: {message}</p>
         <input
           type="Submit"
           disabled={message.length === 0 || message.length > 40}

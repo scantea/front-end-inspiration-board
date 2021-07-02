@@ -1,38 +1,188 @@
-.App {
-  text-align: center;
+body {
+  margin: 3rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: black;
+  background-color: pink;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+h1,
+h2 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 1em 1em;
+  display: inline-block;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  background-color: black;
+  transform: rotate(-5deg) skew(-5deg);
+  border-radius: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  /* border-bottom: 10px solid lightgrey; */
+  background-color: black;
+  border: 2px solid black;
+  box-shadow: -15px 7px 1px rgb(213, 34, 162);
+}
+
+.boards_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.boards_list {
+  max-height: 9rem;
+  min-height: 9rem;
+  overflow: scroll;
+  margin-right: 2rem;
+  border: black solid 1px;
+  cursor: pointer;
+}
+
+.new_board_form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.new-board-form-toggle {
+  padding: 0.5em;
+  background-color: rgb(237, 136, 197);
+  border: 2px solid black;
+  cursor: pointer;
+}
+.cards__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.card-items__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 2rem;
+}
+.heart-shape {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.heart-shape:before,
+.heart-shape:after {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  content: "";
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  background-color: rgb(145, 216, 235);
+  opacity: 0.33;
+}
+.heart-shape:before {
+  bottom: 0px;
+  left: -100px;
+}
+.heart-shape:after {
+  top: -100px;
+  right: 0px;
+}
+.card {
+  font-family: "Homemade Apple", cursive;
+  font-family: "Concert One", cursive;
+
+  background-color: rgb(235, 134, 237);
+  box-shadow: -10px 7px 7px rgb(9, 9, 9);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex-direction: column;
+  border-radius: 100px;
+}
+/* .heart-shape {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+} */
+/* .heart-shape:before,
+.heart-shape:after {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  content: ""; */
+/* -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  background-color: rgb(231, 211, 234);
+  opacity: 0.33;
+}
+.heart-shape:before {
+  bottom: 0px;
+  left: -100px;
+}
+.heart-shape:after {
+  top: -100px;
+  right: 0px;
+} */
+
+.card-item__message {
+  text-align: center;
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
+.card_controls {
+  font-family: "Open Sans", sans-serif;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  width: 100%;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.card-item__controls > li:hover,
+.footer__delete-btn:hover {
+  text-decoration: darkmagenta, underline;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+input {
+  box-sizing: content-box;
+}
+
+.invalid-form-input {
+  border: red solid 1px;
+  box-shadow: 0 0 7px red;
+}
+
+footer {
+  text-align: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
 }
