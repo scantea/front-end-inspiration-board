@@ -5,7 +5,7 @@ import NewCardForm from "./NewCard";
 
 const CardList = (props) => {
   const [cardData, setCardData] = useState([]);
-  const [sortType, setSortType] = useState("card_id");
+  const [sortType, setSortType] = useState("likes_count");
 
   useEffect(() => {
     axios
@@ -20,14 +20,16 @@ const CardList = (props) => {
             message: "message",
             likes_count: "likes_count",
           };
+          const sortProperty = types[type];
+          const sorted = [...cardData].sort(
+            (a, b) => b[sortProperty] - a[sortProperty]
+          );
+          setCardData(sorted);
         };
-        const sortProperty = types[type];
-        const sorted = [...CardList].sort(
-          (a, b) => b[sortProperty] - a[sortProperty]
-        );
-        setCardData(sorted);
-        setCardData(response.data.cards);
+        //setCardData(sorted);
         sortArray(sortType);
+        setCardData(response.data.cards);
+        //sortArray(sortType);
       }) //logic to sort cards; create a function in or out, and call it here
       .catch((error) => {
         console.log("Error:", error);
@@ -114,6 +116,13 @@ const CardList = (props) => {
           <option value="message">Alphabetically</option>
           <option value="likes_count">Number likes</option>
         </select>
+        {cardData.map((card) => (
+          <div key={card.card_id} style={{ margin: "30px" }}>
+            <div>{`ID: ${card.card_id}`}</div>
+            <div>{`Message: ${card.message}`}</div>
+            <div>{`Likes: ${card.likes_count}`}</div>
+          </div>
+        ))}
       </section>
     </section>
   );
