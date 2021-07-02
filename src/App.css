@@ -96,9 +96,9 @@ h2 {
   right: 0px;
 }
 .card {
-  font-family: "Homemade Apple", cursive;
-  font-family: "Concert One", cursive;
-
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
   background-color: rgb(235, 134, 237);
   box-shadow: -10px 7px 7px rgb(9, 9, 9);
   min-height: 200px;
