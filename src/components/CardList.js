@@ -21,7 +21,7 @@ const CardList = (props) => {
             likes_count: "likes_count",
           };
           const sortProperty = types[type];
-          const sorted = [...cardData].sort(
+          const sorted = [..."card"].sort(
             (a, b) => b[sortProperty] - a[sortProperty]
           );
           setCardData(sorted);
