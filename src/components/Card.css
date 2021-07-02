@@ -1,0 +1,13 @@
+.card_controls {
+    list-style-type: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    padding: 0;
+    width: 100%;
+    justify-content: space-evenly;
+
+}
+
+.card {
+    
+}
